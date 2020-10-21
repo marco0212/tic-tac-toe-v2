@@ -1,0 +1,159 @@
+:root {
+  --point-color: brown;
+  --common-border-color: #999;
+}
+
+html,
+body {
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+p,
+ul {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+h1 {
+  color: var(--point-color);
+  font-size: 2em;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.main-logo {
+  display: block;
+  margin: 2em auto 0;
+  height: 100px;
+}
+
+.container {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.board-container {
+  margin-bottom: 24px;
+  background-color: var(--point-color);
+  padding: 32px 0;
+}
+
+.board {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 450px;
+  width: 100%;
+}
+
+.board-cell {
+  position: relative;
+  width: 33.333%;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  cursor: pointer;
+}
+
+.board-cell:not(:nth-child(3n))::before {
+  content: 'cell right border';
+  font-size: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -5px;
+  width: 10px;
+  background-color: var(--common-border-color);
+}
+
+.board-cell:not(:nth-child(n + 7))::after {
+  content: 'cell bottom border';
+  font-size: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  height: 10px;
+  background-color: var(--common-border-color);
+}
+
+.scores {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px;
+  margin-bottom: 24px;
+}
+
+.scores li {
+  border-radius: 10px;
+  box-shadow: 0 3px 5px var(--common-border-color);
+  padding: 15px;
+  width: calc(50% - 7.5px);
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  transition: all 0.3s;
+}
+
+.scores li.active {
+  box-shadow: 0 3px 5px var(--point-color);
+}
+
+.infos {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 24px;
+}
+
+.controls {
+  padding: 0 15px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+button {
+  width: calc(50% - 7.5px);
+  border: 0;
+  font-size: 18px;
+  border-radius: 10px;
+  box-shadow: 0 3px 5px var(--common-border-color);
+  padding: 15px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 480px) {
+  .controls {
+    display: block;
+  }
+
+  .controls button {
+    width: 100%;
+  }
+
+  #start-button {
+    margin-bottom: 8px;
+  }
+}
